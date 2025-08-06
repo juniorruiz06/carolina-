@@ -1,30 +1,34 @@
-# 🌟 Contigo Wellspring
+# carolina-
 
-> Tu compañero de bienestar integral potenciado por IA
+> Aplicación móvil de bienestar integral con IA - Contigo Wellspring
 
-Una aplicación móvil moderna diseñada para acompañarte en tu journey de bienestar emocional, académico y de salud, con inteligencia artificial integrada.
+Una aplicación React Native moderna con Capacitor que integra inteligencia artificial para brindar apoyo emocional, académico y de salud personalizado.
 
-![Build Status](https://github.com/tu-usuario/contigo-wellspring/workflows/Build%20Android%20APK/badge.svg)
+![Build Status](https://github.com/juniorruiz06/carolina-/workflows/Build%20Android%20APK/badge.svg)
 
-## ✨ Características
+## ✨ Características Principales
 
-- 🤖 **Asistente IA inteligente** con Claude AI
-- 💝 **Apoyo emocional personalizado**
-- 📚 **Asistencia académica** y técnicas de estudio
-- 🏃‍♀️ **Consejos de salud** y bienestar
-- 📱 **Diseño móvil nativo** con Glassmorphism
-- 🔄 **Sincronización en la nube** con Supabase
+- 🤖 **Asistente IA inteligente** powered by Claude AI
+- 💝 **Apoyo emocional personalizado** con análisis de sentimientos
+- 📚 **Asistencia académica** y técnicas de estudio avanzadas
+- 🏃‍♀️ **Consejos de salud** y seguimiento de bienestar
+- 📱 **Diseño móvil nativo** con efectos Glassmorphism
+- 🔄 **Sincronización en tiempo real** con Supabase
+- 🎙️ **Comandos de voz** integrados
+- 🔔 **Notificaciones inteligentes**
+- 📊 **Dashboard analítico** de progreso
 
-## 🚀 Instalación Rápida
+## 🚀 Instalación y Configuración
 
 ### Prerrequisitos
 - Node.js 18+
-- NPM o Yarn
+- Android Studio (para desarrollo Android)
+- Git
 
-### 1. Clonar repositorio
+### 1. Clonar el repositorio
 ```bash
-git clone https://github.com/tu-usuario/contigo-wellspring.git
-cd contigo-wellspring
+git clone https://github.com/juniorruiz06/carolina-.git
+cd carolina-
 ```
 
 ### 2. Instalar dependencias
@@ -35,7 +39,22 @@ npm install
 ### 3. Configurar variables de entorno
 ```bash
 cp .env.example .env
-# Edita .env con tus claves reales
+```
+
+Edita el archivo `.env` con tus credenciales:
+```env
+# Supabase Configuration
+VITE_SUPABASE_URL=https://tu-proyecto.supabase.co
+VITE_SUPABASE_ANON_KEY=tu_supabase_anon_key
+
+# Anthropic Claude API
+VITE_ANTHROPIC_API_KEY=sk-ant-api03-tu_claude_api_key
+VITE_ANTHROPIC_API_URL=https://api.anthropic.com/v1/messages
+
+# App Configuration
+VITE_APP_NAME=Carolina Wellspring
+VITE_APP_VERSION=1.0.0
+VITE_APP_DESCRIPTION=Tu compañera de bienestar integral
 ```
 
 ### 4. Ejecutar en desarrollo
@@ -45,71 +64,112 @@ npm run dev
 
 ## 📱 Generar APK
 
-### Automático (GitHub Actions)
-1. Haz push a `main` → Se genera APK debug automáticamente
-2. Crea un tag → Se genera APK release firmado
+### 🔄 Automático con GitHub Actions
 
-### Manual
+#### APK Debug (Automático)
+- Cada push a `main` o `develop` genera automáticamente un APK debug
+- Disponible en la sección "Actions" → "Artifacts"
+
+#### APK Release (Con Tag)
 ```bash
-# Construir para Android
-npm run build
-npx cap sync
-npx cap open android
-
-# O usar el script automatizado
-.\build-apk.bat
+# Crear y subir tag para release
+git tag v1.0.0
+git push origin v1.0.0
 ```
 
-## 🔧 Configuración
+### 🛠️ Manual (Local)
+```bash
+# Generar APK debug local
+npm run cap:build
+cd android
+./gradlew assembleDebug
 
-### Claude AI
-1. Crea cuenta en [console.anthropic.com](https://console.anthropic.com)
-2. Genera API key
-3. Configura en `.env`:
-   ```env
-   VITE_ANTHROPIC_API_KEY=sk-ant-api03-tu_clave_aqui
-   ```
+# APK estará en: android/app/build/outputs/apk/debug/
+```
 
-### Supabase
-1. Crea proyecto en [supabase.com](https://supabase.com)
-2. Configura las tablas (ver `README_COMPLETO.md`)
-3. Agrega URL y keys al `.env`
+## 🏗️ Arquitectura del Proyecto
 
-## 🏗️ Tecnologías
+```
+src/
+├── components/          # Componentes React reutilizables
+│   ├── ai/             # Componentes de IA
+│   ├── auth/           # Autenticación
+│   ├── emotional/      # Módulo emocional
+│   ├── mobile/         # Componentes móviles
+│   └── ui/             # UI components (shadcn/ui)
+├── hooks/              # Custom React hooks
+├── pages/              # Páginas principales
+├── services/           # Servicios y APIs
+├── integrations/       # Integraciones (Supabase)
+└── types/              # Definiciones TypeScript
+```
 
-- **Frontend**: React 18 + TypeScript + Vite
-- **Mobile**: Capacitor + Android Studio
-- **UI**: Tailwind CSS + shadcn/ui + Radix UI
-- **Backend**: Supabase (PostgreSQL)
-- **IA**: Anthropic Claude API
-- **Estado**: React Query + Context API
+## 🔧 Scripts Disponibles
 
-## 📚 Documentación
+```bash
+npm run dev              # Desarrollo web
+npm run build            # Build producción
+npm run cap:sync         # Sincronizar Capacitor
+npm run cap:build        # Build + sync
+npm run cap:android      # Abrir Android Studio
+npm run cap:run:android  # Ejecutar en Android
+```
 
-- 📖 [Guía Completa](./README_COMPLETO.md)
-- 🤖 [Configurar Claude AI](./CONFIGURAR_CLAUDE.md)
-- 🏗️ [Construir APK](./BUILD_ANDROID.md)
+## 🌐 Configuración de CI/CD
+
+El proyecto incluye GitHub Actions configurado para:
+
+- ✅ Build automático en cada push
+- 📦 Generación de APK debug/release
+- 🚀 Deploy automático de releases
+- 🔒 Firma de APK con keystore seguro
+
+### Secrets requeridos en GitHub:
+```
+VITE_SUPABASE_URL
+VITE_SUPABASE_ANON_KEY
+VITE_ANTHROPIC_API_KEY
+ANDROID_KEYSTORE_FILE (base64)
+ANDROID_KEYSTORE_PASSWORD
+ANDROID_KEY_ALIAS
+ANDROID_KEY_PASSWORD
+```
+
+## 🛡️ Tecnologías Utilizadas
+
+- **Frontend**: React + TypeScript + Vite
+- **Mobile**: Capacitor + Android
+- **UI**: Tailwind CSS + shadcn/ui + Glassmorphism
+- **Backend**: Supabase (Database + Auth + Storage)
+- **IA**: Claude AI (Anthropic)
+- **CI/CD**: GitHub Actions
+- **Build**: Gradle + Android SDK
+
+## 📋 Roadmap
+
+- [ ] Integración con más modelos de IA
+- [ ] Modo offline avanzado
+- [ ] Sincronización con wearables
+- [ ] Análisis predictivo de bienestar
+- [ ] Comunidad y social features
+- [ ] Versión iOS
 
 ## 🤝 Contribuir
 
 1. Fork el proyecto
-2. Crea tu rama: `git checkout -b feature/nueva-funcionalidad`
-3. Commit: `git commit -m 'Agregar nueva funcionalidad'`
-4. Push: `git push origin feature/nueva-funcionalidad`
+2. Crea tu feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push al branch (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
 
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
 
-## 📞 Soporte
+## 👨‍💻 Autor
 
-¿Necesitas ayuda? 
-
-- 📚 Revisa la [documentación completa](./README_COMPLETO.md)
-- 🐛 Reporta bugs en [Issues](https://github.com/tu-usuario/contigo-wellspring/issues)
-- 💬 Únete a las [Discussions](https://github.com/tu-usuario/contigo-wellspring/discussions)
+**Junior Ruiz** - [@juniorruiz06](https://github.com/juniorruiz06)
 
 ---
 
-**Desarrollado con ❤️ para acompañar tu bienestar integral**
+⭐ ¡Dale una estrella si este proyecto te ayuda!
