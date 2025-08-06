@@ -1,0 +1,390 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Contigo Design System - Glassmorphism & Wellness Colors */
+
+@layer base {
+  :root {
+    /* Contigo Brand Colors */
+    --contigo-primary: 262 52% 82%;        /* #B69CFF - Morado lavanda */
+    --contigo-secondary: 195 74% 75%;      /* #89CFF0 - Azul celeste */
+    --contigo-accent: 142 71% 88%;         /* #C5FAD5 - Verde suave */
+    --contigo-heart: 348 83% 73%;          /* #F472B6 - Rosa corazón */
+    
+    /* Glassmorphism Effects */
+    --glass-white: 0 0% 100% / 0.25;       /* Cristal blanco */
+    --glass-border: 0 0% 100% / 0.18;      /* Borde translúcido */
+    --glass-shadow: 226 70% 55% / 0.2;     /* Sombra glassmorphism */
+    --glass-backdrop: 225 100% 95% / 0.8;  /* Backdrop blur effect */
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(225 84% 77%), hsl(262 70% 82%));
+    --gradient-secondary: linear-gradient(135deg, hsl(195 100% 85%), hsl(262 52% 82%));
+    --gradient-background: linear-gradient(135deg, hsl(225 84% 77%), hsl(262 70% 82%));
+    --gradient-glass: linear-gradient(145deg, hsl(0 0% 100% / 0.3), hsl(0 0% 100% / 0.1));
+    
+    /* Semantic Design Tokens */
+    --background: 225 84% 77%;              /* Gradiente base azul-morado */
+    --foreground: 225 15% 15%;              /* Texto principal oscuro */
+    
+    --primary: 262 52% 82%;                 /* Morado lavanda principal */
+    --primary-foreground: 225 15% 15%;     /* Texto sobre primary */
+    
+    --secondary: 195 74% 75%;               /* Azul celeste */
+    --secondary-foreground: 225 15% 15%;   /* Texto sobre secondary */
+    
+    --accent: 142 71% 88%;                  /* Verde suave */
+    --accent-foreground: 225 15% 15%;      /* Texto sobre accent */
+    
+    --card: 0 0% 100% / 0.25;              /* Glassmorphism card */
+    --card-foreground: 225 15% 15%;        /* Texto en cards */
+    
+    --muted: 0 0% 100% / 0.15;             /* Elementos silenciados */
+    --muted-foreground: 225 10% 40%;       /* Texto silenciado */
+    
+    --border: 0 0% 100% / 0.18;            /* Bordes glassmorphism */
+    --input: 0 0% 100% / 0.2;              /* Inputs glassmorphism */
+    --ring: 262 52% 82%;                   /* Focus ring */
+    
+    --destructive: 0 84% 60%;              /* Error rojo */
+    --destructive-foreground: 0 0% 100%;   /* Texto en destructive */
+    
+    --radius: 1.5rem;                      /* Radio redondeado 24px */
+    
+    /* Fonts */
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Nunito', sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply text-foreground font-secondary;
+    background: var(--gradient-background);
+    min-height: 100vh;
+    font-family: var(--font-secondary);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+  }
+}
+
+@layer components {
+  /* Glassmorphism Components */
+  .glass-container {
+    @apply backdrop-blur-sm border border-border rounded-3xl;
+    background: linear-gradient(145deg, hsl(var(--glass-white)), hsl(var(--glass-white)));
+    box-shadow: 
+      0 8px 32px 0 hsl(var(--glass-shadow)),
+      inset 0 1px 0 0 hsl(var(--glass-border));
+  }
+  
+  .glass-button {
+    @apply glass-container px-8 py-4 text-center cursor-pointer transition-all duration-300;
+    @apply hover:shadow-lg hover:scale-105 active:scale-95;
+  }
+  
+  .glass-input {
+    @apply glass-container px-6 py-4 w-full focus:outline-none;
+    @apply focus:ring-2 focus:ring-primary/50 focus:border-primary/30;
+  }
+  
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Animations */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+  
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ============================================
+   MOBILE OPTIMIZATIONS & SAFE AREAS
+   ============================================ */
+
+@layer utilities {
+  /* Safe Area Support for Mobile Devices */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .safe-area-left {
+    padding-left: env(safe-area-inset-left);
+  }
+  
+  .safe-area-right {
+    padding-right: env(safe-area-inset-right);
+  }
+  
+  /* Mobile Touch Optimizations */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+  
+  .no-scroll {
+    overflow: hidden;
+    height: 100vh;
+  }
+  
+  /* Mobile Gradients */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  /* Mobile Typography */
+  .text-mobile-xs { font-size: 0.75rem; line-height: 1rem; }
+  .text-mobile-sm { font-size: 0.875rem; line-height: 1.25rem; }
+  .text-mobile-base { font-size: 1rem; line-height: 1.5rem; }
+  .text-mobile-lg { font-size: 1.125rem; line-height: 1.75rem; }
+  .text-mobile-xl { font-size: 1.25rem; line-height: 1.75rem; }
+  .text-mobile-2xl { font-size: 1.5rem; line-height: 2rem; }
+  
+  /* Mobile Spacing */
+  .p-mobile { padding: 1rem; }
+  .px-mobile { padding-left: 1rem; padding-right: 1rem; }
+  .py-mobile { padding-top: 1rem; padding-bottom: 1rem; }
+  .m-mobile { margin: 1rem; }
+  .mx-mobile { margin-left: 1rem; margin-right: 1rem; }
+  .my-mobile { margin-top: 1rem; margin-bottom: 1rem; }
+  
+  /* Mobile Interactions */
+  .tap-highlight-none {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .mobile-scroll {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ============================================
+   MOBILE-SPECIFIC ANIMATIONS
+   ============================================ */
+
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToBottom {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes mobileScale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.slide-up-mobile {
+  animation: slideInFromBottom 0.3s ease-out;
+}
+
+.slide-down-mobile {
+  animation: slideOutToBottom 0.3s ease-in;
+}
+
+.tap-scale {
+  animation: mobileScale 0.15s ease-out;
+}
+
+/* ============================================
+   RESPONSIVE MOBILE CLASSES
+   ============================================ */
+
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+  
+  .mobile-text-center {
+    text-align: center;
+  }
+  
+  .mobile-full-width {
+    width: 100% !important;
+  }
+  
+  .mobile-stack {
+    flex-direction: column !important;
+  }
+  
+  /* Mobile Card Adjustments */
+  .glass-container {
+    @apply rounded-2xl; /* Smaller radius on mobile */
+  }
+  
+  /* Mobile Button Adjustments */
+  .glass-button {
+    @apply px-6 py-3; /* Smaller padding on mobile */
+    min-height: 44px; /* iOS touch target minimum */
+  }
+  
+  /* Mobile Input Adjustments */
+  .glass-input {
+    @apply px-4 py-3; /* Optimized for mobile touch */
+    min-height: 44px;
+  }
+}
+
+/* ============================================
+   PWA & CAPACITOR MOBILE OPTIMIZATIONS
+   ============================================ */
+
+@media (display-mode: standalone) {
+  /* PWA standalone mode styles */
+  body {
+    background-attachment: fixed;
+  }
+}
+
+/* iOS-specific adjustments */
+@supports (-webkit-touch-callout: none) {
+  .ios-scroll-fix {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Android-specific adjustments */
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: .001dpcm) {
+  .android-scroll-fix {
+    scroll-behavior: smooth;
+  }
+}
