@@ -6,6 +6,8 @@ on:
   pull_request:
     branches: [ main ]
   workflow_dispatch:
+  release:
+    types: [created]
 
 jobs:
   build:
@@ -68,14 +70,14 @@ jobs:
     - name: Upload debug APK
       uses: actions/upload-artifact@v3
       with:
-        name: contigo-wellspring-debug
+        name: carolina-wellspring-debug
         path: android/app/build/outputs/apk/debug/app-debug.apk
     
     - name: Upload release APK (if tagged)
       if: startsWith(github.ref, 'refs/tags/')
       uses: actions/upload-artifact@v3
       with:
-        name: contigo-wellspring-release
+        name: carolina-wellspring-release
         path: android/app/build/outputs/apk/release/app-release.apk
     
     - name: Create Release (if tagged)
@@ -85,7 +87,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ github.ref }}
-        release_name: Contigo Wellspring ${{ github.ref }}
+        release_name: Carolina Wellspring ${{ github.ref }}
         draft: false
         prerelease: false
     
@@ -97,5 +99,5 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: android/app/build/outputs/apk/release/app-release.apk
-        asset_name: contigo-wellspring.apk
+        asset_name: carolina-wellspring.apk
         asset_content_type: application/vnd.android.package-archive

@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.contigo.wellspring',
-  appName: 'Contigo Wellspring',
+  appId: 'com.carolina.wellspring',
+  appName: 'Carolina Wellspring',
   webDir: 'dist',
   plugins: {
     SplashScreen: {
